@@ -33,6 +33,7 @@ export class LoginAuthComponent implements OnInit {
         console.log(data);
         if(data.token) {
           sessionStorage.setItem('token', data.token);
+          sessionStorage.setItem('name', data.firstName);
           this.route.navigate(['quiz'])
         }
        });

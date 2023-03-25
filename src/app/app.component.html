@@ -1,8 +1,11 @@
 <header>
-  
-  <div class="logout_button" *ngIf="isLogin">
-    <h1 class="app_title">User Journey</h1>
-    <button (click)="logout()" mat-raised-button color="primary" mat-button class="logout">Logout</button>
-  </div>
-</header><hr>
+  <div class="row">
+    <div class="col-11">
+      <h1 class="app_title"> Quiz Festivel</h1>
+    </div>
+    <div class="col-1 valign-middle">
+      <button *ngIf="isLogin" (click)="logout()" mat-raised-button color="primary" mat-button class="logout">Logout</button>
+    </div>
+</div>
+</header><hr style="margin: 0;">
 <router-outlet (activate)="isLoggedin()"></router-outlet>

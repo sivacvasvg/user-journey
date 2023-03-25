@@ -20,6 +20,11 @@
     min-width: 300px;
   }
 
+  .login-form-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
   mat-card-title,
   mat-card-content {
     display: flex;

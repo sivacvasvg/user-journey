@@ -1,6 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, AfterViewInit } from '@angular/core';
 // import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { AuthGuardService } from '../auth/auth-guard.service';
 import { interval } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { interval } from 'rxjs';
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.css']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, AfterViewInit {
  
   // Movies = [
   //   'Blade Runner',
@@ -54,9 +54,10 @@ export class QuizComponent implements OnInit {
   //   }
   // } 
   
-  public name: string = "";
+  name: any = "";
   public isCorrect : Boolean = false;
   public questionList: any = [];
+  selectedOption: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
   counter = 60;
@@ -68,9 +69,11 @@ export class QuizComponent implements OnInit {
   constructor(private questionService: AuthGuardService) { }
 
   ngOnInit(): void {
-    this.name = localStorage.getItem("name")!;
     this.getAllQuestions();
     this.startCounter();
+  }
+  ngAfterViewInit(): void {
+    this.name = sessionStorage.getItem("name");
   }
   getAllQuestions() {
     this.questionService.getQuestionJson()
@@ -86,8 +89,24 @@ export class QuizComponent implements OnInit {
     
    
   }
-  answer(currentQno: number, option: any) {
-
+  onDrop(event: CdkDragDrop<string[]>) {
+    
+    console.log(event);
+    this.selectedOption = [event.container.data]
+  }
+  canDrop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
+  }
+  answer(event: any, currentQno: number, option: any) {
+    console.log(event);
+    this.selectedOption = [];
     if(currentQno === this.questionList.length){
       this.isQuizCompleted = true;
       this.stopCounter();

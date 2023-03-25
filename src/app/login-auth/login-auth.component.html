@@ -1,5 +1,5 @@
 <div class="container">
-    <mat-card>
+    <mat-card class="login-form-card">
         <mat-card-title>User Login</mat-card-title>
         <mat-card-content>
         <form [formGroup]="form" class="login_form" (ngSubmit)="loginAuth()">
@@ -15,7 +15,7 @@
                 <span *ngIf="form.get('password')?.hasError('required') && (form.get('password')?.dirty || form.get('password')?.touched)">Please Enter Valid Password</span>
                 <span *ngIf="((form.get('password')?.hasError('minlength')) || (form.get('password')?.hasError('maxlength'))) && (form.get('password')?.dirty || form.get('password')?.touched)">Password must be minLength 6 & maxLength 10</span>
             </mat-error>
-        <div class="button">
+        <div class="button justify-content-center">
             <button mat-raised-button color="primary" type="submit" mat-button>Login</button>
         </div>
 
