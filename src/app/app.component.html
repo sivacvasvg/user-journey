@@ -1,0 +1,8 @@
+<header>
+  
+  <div class="logout_button" *ngIf="isLogin">
+    <h1 class="app_title">User Journey</h1>
+    <button (click)="logout()" mat-raised-button color="primary" mat-button class="logout">Logout</button>
+  </div>
+</header><hr>
+<router-outlet (activate)="isLoggedin()"></router-outlet>

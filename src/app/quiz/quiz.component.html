@@ -1,0 +1,153 @@
+<div class="container" *ngIf="hidden">
+    <mat-card>
+        <mat-card-title>Quiz Festivel!</mat-card-title>
+        <mat-card-content>
+        
+            
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsoj7sHPjt2lU2baAoEVMB1qoNz_9hoMlWlQ&usqp=CAU" alt="">
+
+       
+    </mat-card-content>
+    <div class="button">
+        <button mat-raised-button color="accent" (click)="quizStart()" type="submit" mat-button>Start</button>
+    </div>
+    </mat-card>
+</div>
+<br>
+
+<!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let movieName of Movies" cdkDrag>{{movieName}}</div>
+  </div> -->
+<!-- <div *ngIf="hidden1"> -->
+  <div class="container" *ngIf="hidden1">
+<mat-card>
+<mat-card-content>
+ <!-- </div> -->
+ <!-- <div class="container" *ngIf="hidden1"> -->
+    <!-- <h2>What is Html comment?</h2>
+    <div 
+    cdkDropList 
+    #doneMovieList="cdkDropList" 
+    [cdkDropListData]="MoviesWatched"
+    [cdkDropListConnectedTo]="[moviesList]" 
+    class="movie-list" 
+    (cdkDropListDropped)="onDrop($event)"
+    >      
+    <div class="movie-block" *ngFor="let moviesWatched of MoviesWatched" cdkDrag>{{moviesWatched}}</div>
+ </div>
+ <h2>Choose the currect answer.</h2>
+ <div 
+ cdkDropList 
+ #moviesList="cdkDropList" 
+ [cdkDropListData]="MoviesList"
+ [cdkDropListConnectedTo]="[doneMovieList]" 
+ class="movie-list" 
+ (cdkDropListDropped)="onDrop($event)" >
+ <div class="movie-block" *ngFor="let moviesList of MoviesList" cdkDrag>{{moviesList}}</div>
+</div>
+<button 
+>Next</button> -->
+<!-- <mat-card>
+    <mat-card-content> -->
+<div class="container mt-5 display-flex">
+    <div class="card">
+        <div class="d-flex justify-content-between p-3">
+            
+            <div class="quiz-header">
+                <h4 style="font-family: cursive;">Staterd The Quiz!</h4>
+                <span style="font-style: italic;">Welcome {{name}}</span>
+            </div>
+        </div>
+
+        <ng-container *ngIf="!isQuizCompleted">
+            
+            <div class="d-flex justify-content-around py-3">
+                <div class="score">
+                    <h5>{{points}} Points</h5>
+                </div>
+                <div class="question-remain">
+                    <span style="font-style: italic;">Question {{currentQuestion+1}} of {{questionList.length}}</span>
+                </div>
+                <div class="timer">
+                    <h5>{{counter}} sec ⏱</h5>
+                </div>
+            </div>
+            
+            <div class="progress mb-3">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [ngStyle]="{'width':progress+'%'}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <div class="question"  >
+                
+                <!-- <div class="card"> -->
+                    <h3>{{questionList[currentQuestion]?.questionText}}</h3>
+                    
+                <!-- </div> -->
+            </div>
+            <div class="options">
+                
+                <ol *ngFor="let option of questionList[currentQuestion]?.options">
+                    <li (click)="answer(currentQuestion+1,option)">
+                        <!-- <div
+                        cdkDropList
+                        [cdkDropListData]="todo"
+                        class="example-list"
+                        (cdkDropListDropped)="drop($event)">
+                        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                      </div> -->
+          
+                      <div class="example-box" cdkDrag>
+                      <div   class="example-list">
+                        <div appChangeBg [isCorrect]="option.correct"   class="card example-box"  >
+                           
+                             <b>{{option.text}}</b>
+                             <!-- <div></div> -->
+                        </div>
+                        </div>
+                        
+                    </div>
+                    </li>
+
+                </ol>
+            </div>                  
+            <div class="button bn">
+            <div class="d-flex justify-content-between">
+                <button [disabled]="currentQuestion===0"mat-raised-button color="accent" class="btn" (click)="previousQuestion()">Previous</button>
+                
+                <button class="btn"mat-raised-button color="accent" (click)="resetQuiz()">Reset</button>
+
+                <button class="btn" mat-raised-button color="accent" (click)="nextQuestion()">Next</button>
+            </div>
+        </div>
+        </ng-container>
+
+        <ng-container *ngIf="isQuizCompleted">
+            <div class="row d-flex justify-content-between">
+                
+                <img style="width: 50%;" class="img-fluid col-sm-12 mx-auto" src="https://icon-library.com/images/celebration-icon-png/celebration-icon-png-7.jpg" alt="">
+                
+                <div class="result text-center col-md-6 col-sm-12">
+                    <h1>Congratulations!! <br>You have completed the quiz. <br>Below is your result:</h1>
+                    <p>Total Question Attempted : {{questionList.length}} </p>
+                    <p>Total Correct Answered : {{correctAnswer}} </p>
+                    <p>Total Wrong Answered : {{inCorrectAnswer}} </p>
+                    <p>Your Score : {{points}} Points </p>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+<!-- </mat-card-content>
+</mat-card> -->
+</mat-card-content>
+</mat-card>
+ </div>
+<!-- </div> -->
+<!-- <div class="example-box" cdkDragLockAxis="y" cdkDrag>
+  I can only be dragged up/down
+</div>
+
+<div class="example-box" cdkDragLockAxis="x" cdkDrag>
+  I can only be dragged left/right
+</div> -->
